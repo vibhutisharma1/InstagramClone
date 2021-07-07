@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".LoginActivity">
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="20dp"
+        android:background="@color/blue"
+        android:backgroundTint="@color/blue"
+        android:text="Log In"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="428dp" />
+
+
+    <ImageView
+        android:id="@+id/instagramLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="74dp"
+        android:src="@drawable/nav_logo_whiteout"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="0dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        tools:text="Password" />
+
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/instagramLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:ems="10"
+        android:hint="Phone number, email or username"
+        android:inputType="textEmailAddress"
+        tools:text="Phone number, email or username" />
+
+</RelativeLayout>
