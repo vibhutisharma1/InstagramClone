@@ -26,22 +26,26 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="8dp"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
+    <EditText
         android:id="@+id/captionTxt"
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="9dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="-1dp"
         android:hint="Caption"
+        android:inputType="text"
         android:textSize="16sp" />
+
 
     <Button
         android:id="@+id/uploadBtn"
@@ -54,7 +58,7 @@
         android:layout_marginStart="-13dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="-20dp"
-        android:text="Upload " />
+        android:text="Take a Picture " />
 
     <ImageButton
         android:id="@+id/logoutBtn"
