@@ -5,13 +5,21 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
     <application
         android:name=".ParseApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
+        android:usesCleartextTraffic="true"
         android:label="Instagram"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstagramClone">
+        <activity android:name=".PostDetails"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -23,7 +31,7 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".SignupPage"></activity>
+        <activity android:name=".SignupPage" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".FrontActivity">
             <intent-filter>
@@ -34,12 +42,5 @@
         </activity>
         <activity android:name=".MainActivity" />
     </application>
-
-
-    <queries>
-        <intent>
-            <action android:name="android.media.action.IMAGE_CAPTURE" />
-        </intent>
-    </queries>
 
 </manifest>

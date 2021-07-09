@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragments.ComposeFragment">
+
+
+    <EditText
+        android:id="@+id/captionTxt"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_below="@+id/feedBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="-8dp"
+        android:hint="Caption"
+        android:inputType="text"
+        android:textSize="16sp" />
+    <Button
+        android:id="@+id/uploadBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/captionTxt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-13dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="-20dp"
+        android:text="Take a Picture " />
+
+
+    <ImageView
+        android:id="@+id/currentImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submitBtn"
+        android:layout_below="@+id/uploadBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="8dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="287dp"
+        android:text="Submit" />
+
+
+
+</LinearLayout>
