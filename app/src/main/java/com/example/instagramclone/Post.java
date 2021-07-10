@@ -19,7 +19,6 @@ public class Post extends ParseObject implements Serializable {
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_LIKES = "likes";
-    public static final String KEY_COMMENT = "comment";
 
 
 

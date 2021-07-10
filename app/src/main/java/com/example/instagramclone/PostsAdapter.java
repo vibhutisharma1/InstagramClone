@@ -2,20 +2,32 @@ package com.example.instagramclone;
 
 import android.content.Context;
 import android.content.Intent;
+
+import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.instagramclone.databinding.ItemPostBinding;
+import com.example.instagramclone.fragments.CommentFragment;
+
+import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.SaveCallback;
 
 import org.parceler.Parcels;
 
+import java.util.Date;
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
@@ -63,23 +75,85 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
+        private ImageView profileImg;
+        private ImageView likeBtn;
+        private ImageView commentBtn;
+        private TextView captionUser;
+        private TextView likeCount;
+        private TextView timeAgo;
+
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            profileImg = itemView.findViewById(R.id.profilePic);
+            likeBtn = itemView.findViewById(R.id.heartLike);
+            captionUser = itemView.findViewById(R.id.captionUser);
+            likeCount = itemView.findViewById(R.id.numLikes);
+            timeAgo = itemView.findViewById(R.id.timeAgo);
+            commentBtn = itemView.findViewById(R.id.comment);
+
             itemView.setOnClickListener(this);
+
+            likeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Post current = posts.get(getAdapterPosition());
+                    current.setLike(current.getKeyLike() + 1);
+                    likeBtn.setBackgroundColor(Color.rgb(255,0,0));
+                    current.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            likeCount.setText("" + current.getKeyLike());
+                        }
+                    });
+
+                }
+            });
+
+            commentBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentManager fm = ((MainActivity) context).getSupportFragmentManager();
+                    CommentFragment commentFragment = CommentFragment.newInstance();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("post", posts.get(getAdapterPosition()));
+                    commentFragment.setArguments(bundle);
+                    //commentFragment.show(fm, "fragment_edit_tweet");
+
+
+                }
+            });
         }
 
         public void bind(Post post) {
+            String username = post.getUser().getUsername();
+
+            ParseFile profile_img =  post.getUser().getParseFile("profile");
+            if (profile_img != null) {
+                Glide.with(context).load(profile_img.getUrl()).into(profileImg);
+            }
+
+            tvUsername.setText(username);
+            captionUser.setText(username);
+            likeCount.setText("" +post.getKeyLike());
+
+            Date createdAt = post.getCreatedAt();
+            String time = Post.calculateTimeAgo(createdAt);
+            timeAgo.setText(time);
+
             tvDescription.setText(post.getCaption());
-            tvUsername.setText(post.getUser().getUsername());
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
+
         }
+
 
         @Override
         public void onClick(View v) {
