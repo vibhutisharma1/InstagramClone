@@ -51,9 +51,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='insta_1' title='Video 1' width='' alt='Video 1' />
-<img src='insta_2' title='Video 2' width='' alt='Video 2' />
-<img src='insta_3' title='Video 3' width='' alt='Video 3' />
+<img src='insta_1.gif' title='Video 1' width='' alt='Video 1' />
+<img src='insta_2.gif' title='Video 2' width='' alt='Video 2' />
+<img src='insta_3.gif' title='Video 3' width='' alt='Video 3' />
 
 GIF created with [Kap](https://getkap.co/).
 
