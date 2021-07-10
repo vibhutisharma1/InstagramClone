@@ -81,7 +81,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
             ParseFile profile_img =  comment.getUser().getParseFile("profile");
             if (profile_img != null) {
-                Glide.with(context).load(profile_img.getUrl()).into(profile);
+                Glide.with(context).load(profile_img.getUrl()).circleCrop().into(profile);
             }
         }
 

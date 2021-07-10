@@ -80,16 +80,6 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigation.setSelectedItemId(R.id.action_home);
 
 
-        binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseUser.logOut();
-                //this will now be null
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                Intent i = new Intent(MainActivity.this, FrontActivity.class);
-                startActivity(i);
-            }
-        });
 
     }
 

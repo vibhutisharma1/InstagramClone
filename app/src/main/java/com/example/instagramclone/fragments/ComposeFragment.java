@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.instagramclone.FrontActivity;
 import com.example.instagramclone.MainActivity;
 import com.example.instagramclone.Post;
 import com.example.instagramclone.R;
@@ -35,11 +36,7 @@ import com.parse.SaveCallback;
 import java.io.File;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ComposeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ComposeFragment extends Fragment {
 
 
@@ -62,6 +59,7 @@ public class ComposeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+//circleCrop
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     @Override
@@ -98,6 +96,17 @@ public class ComposeFragment extends Fragment {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(caption, currentUser, photoFile);
+            }
+        });
+
+        binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                //this will now be null
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                Intent i = new Intent(getContext(), FrontActivity.class);
+                startActivity(i);
             }
         });
     }

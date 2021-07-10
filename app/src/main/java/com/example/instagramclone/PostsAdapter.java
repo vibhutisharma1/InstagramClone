@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,8 +17,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.instagramclone.databinding.ItemPostBinding;
-import com.example.instagramclone.fragments.CommentFragment;
 
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -77,7 +74,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvDescription;
         private ImageView profileImg;
         private ImageView likeBtn;
-        private ImageView commentBtn;
         private TextView captionUser;
         private TextView likeCount;
         private TextView timeAgo;
@@ -95,7 +91,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             captionUser = itemView.findViewById(R.id.captionUser);
             likeCount = itemView.findViewById(R.id.numLikes);
             timeAgo = itemView.findViewById(R.id.timeAgo);
-            commentBtn = itemView.findViewById(R.id.comment);
 
             itemView.setOnClickListener(this);
 
@@ -115,19 +110,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 }
             });
 
-            commentBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FragmentManager fm = ((MainActivity) context).getSupportFragmentManager();
-                    CommentFragment commentFragment = CommentFragment.newInstance();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("post", posts.get(getAdapterPosition()));
-                    commentFragment.setArguments(bundle);
-                    //commentFragment.show(fm, "fragment_edit_tweet");
 
-
-                }
-            });
         }
 
         public void bind(Post post) {
@@ -135,7 +118,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             ParseFile profile_img =  post.getUser().getParseFile("profile");
             if (profile_img != null) {
-                Glide.with(context).load(profile_img.getUrl()).into(profileImg);
+                Glide.with(context).load(profile_img.getUrl()).circleCrop().into(profileImg);
             }
 
             tvUsername.setText(username);
@@ -152,7 +135,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
 
+
+
         }
+
 
 
         @Override
